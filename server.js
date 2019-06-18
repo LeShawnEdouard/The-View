@@ -27,9 +27,11 @@ app.get("/", function(req, res) {
 // Retrieve data from the db
 app.get("/all", function(req, res) {
     db.scrapedData2.find({}, function(error, found) {
+      // Logs the error if found
       if (error) {
         console.log(error);
       }
+      // Formats the response data in json format
       else {
         res.json(found);
       }
