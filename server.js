@@ -19,3 +19,19 @@ db.on("error", function(error) {
     console.log("Database Error:", error);
 });
 
+// Main route (simple Hello World Message)
+app.get("/", function(req, res) {
+    res.send("Hey Homie!");
+});
+
+// Retrieve data from the db
+app.get("/all", function(req, res) {
+    db.scrapedData2.find({}, function(error, found) {
+      if (error) {
+        console.log(error);
+      }
+      else {
+        res.json(found);
+      }
+    });
+});
